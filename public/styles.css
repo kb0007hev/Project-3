@@ -105,6 +105,9 @@ header{
 header img{
   width: 600px;
   /* margin-right: 40px; */
+  position: relative;
+  top: 16px;
+  
 }
 header h2{
   font-size: 3em;
@@ -123,6 +126,8 @@ header .btn{
   font-weight: bold;
   display: inline-block;
   font-size: 0.8em;
+  position: relative;
+  top: 50px;
 }
 .recipes{
   display: grid;
