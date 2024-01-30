@@ -1,17 +1,17 @@
-#  Employee Directory
+#  EVENT MANAGER APPLICATION
 
 ### Website
-> https://employee-book1.netlify.app/
+
 
 ### MOTIVATION
 
 > This is a Per Scholas Project I built as part of a school project.
 
 ### TECHNOLOGIES
-> HTML, CSS, Javascript, REACT, Links, and Parms was used to build this project 
+>html, css, javascript, react, nodejs, express, mongoDb - Fullstack Application
 
 ### DESCRIPTION
-> Employee Directory made using React
+> Event Manager for managing all types of events 
 
 
 ### CREDITS
