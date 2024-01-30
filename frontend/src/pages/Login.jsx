@@ -20,8 +20,9 @@ function Login() {
 
   return (
     <div>
+    <form onSubmit={handleLogin}>
       <h2>Login Page</h2>
-      <form onSubmit={handleLogin}>
+    
         <div>
           <label htmlFor="username">Username:</label>
           <input
