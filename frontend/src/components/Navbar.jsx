@@ -15,7 +15,10 @@ function Navbar() {
           <Link to="/profile">Events</Link>
         </li>
         <li>
-          <Link to="/register">Sign Up</Link>
+          <Link to="/profile">Calendar</Link>
+        </li>
+        <li>
+          <Link to="/register">Login</Link>
         </li>
       </ul>
     </nav>

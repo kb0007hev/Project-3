@@ -2,7 +2,11 @@ import React from 'react'
 
 function Home() {
     return (
-        <section>Home page</section>
+        <div class="headings">
+        <h2>EVENT MANAGER </h2>
+        <img src="/Calendar.png" alt="" />
+        <a href="/" class="btn">enter</a>
+      </div>
     )
 }
 

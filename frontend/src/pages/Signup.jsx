@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function register() {
+function Signup() {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -17,16 +17,16 @@ function register() {
     setPassword(event.target.value);
   };
 
-  const handleRegister = (event) => {
+  const handleSignup = (event) => {
     event.preventDefault();
     // Perform registration logic here
-    console.log('Registering...');
+    console.log('Signing up...');
   };
 
   return (
     <div>
       <h2>Registration Page</h2>
-      <form onSubmit={handleRegister}>
+      <form onSubmit={handleSignup}>
         <div>
           <label htmlFor="username">Username:</label>
           <input
@@ -54,10 +54,10 @@ function register() {
             onChange={handlePasswordChange}
           />
         </div>
-        <button type="submit">Register</button>
+        <button type="submit">Signup</button>
       </form>
     </div>
   );
 }
 
-export default register;
+export default Signup;
