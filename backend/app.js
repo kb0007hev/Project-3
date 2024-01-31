@@ -1,46 +1,103 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const authRoutes = require('../routes/authRoutes');
-const cookieParser = require('cookie-parser');
+const cors = require('cors') // access the server from different domains 
+const bodyParser = require('body-parser') //form Posts 
+
+const Event = require('./models/event');
 
 const app = express();
 
-// middleware
-app.use(express.static('public'));
-app.use(express.json());
-app.use(cookieParser());
+const DB = "mongodb+srv://kevin:test789@cluster0.sk6mdok.mongodb.net/Events?retryWrites=true&w=majority";
 
-// view engine
-app.set('view engine', 'ejs');
+// Database connection
+mongoose.connect(DB, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
+    .then(() => {
+        console.log("Connected to the database");
+    })
+    .catch((err) => {
+        console.log("Error connecting to the database:", err);
+        // Handle the error appropriately, such as exiting the process or displaying an error message
+    });
 
-// database connection
-const dbURI = 'mongodb+srv://kevin:test789@cluster0.sk6mdok.mongodb.net/node-auth?retryWrites=true&w=majority';
+// Model 
+app.get('/add-event', (req, res) => {
+    console.log('Inside /add-event route');
 
-mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
-    .then((result) => app.listen(3000))
-    .catch((err) => console.log(err));
+    const event = new Event({
+        eventName: "Poker Night 3",
+        location: "Dearborn, MI",
+        startTime: "8:00pm",
+        description: "let's get it",
+        price: "As much as you want to lose",
+    });
 
-// routes
-app.get('/', (req, res) => res.render('home'));
-app.get('/events', (req, res) => res.render('events'));
-app.use(authRoutes);
-
-
-// cookies
-app.get('/set-cookies', (req, res) => {
-    // Set 'newUser' cookie with the value 'false'
-    res.cookie('newUser', false);
-    // Set 'isEmployee' cookie with the value 'true', and set additional options
-    res.cookie('isEmployee', true, { maxAge: 1000 * 60 * 60 * 24, httpOnly: true });
-    // Send the response to the client
-    res.send('you got the cookies');
+    event.save()
+        .then((savedEvent) => {
+            res.send(savedEvent);
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(500).send("Error saving event");
+        });
 });
 
-app.get('/read-cookies', (req, res) => {
-    // Read the cookies from the request object
-    const cookies = req.cookies;
-    // Log the cookies on the server console
-    console.log(cookies);
-    // Send the cookies back as a JSON response to the client
-    res.json(cookies);
+app.get('/all-events', (req, res) => {
+    Event.find()
+        .then((result) => {
+            res.send(result);
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(500).send("Error fetching events");
+        });
+});
+
+
+app.get('/single-blog', (req, res) => {
+    Event.findById('65ba01ff2f150d44e86529dc')
+        .then((result) => { // Add the parameter to receive the result
+            res.send(result);
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(500).send("Error fetching events");
+        });
+});
+
+
+//Event Routes
+//Using res.render()
+// app.get('/', (req, res) => {
+//     Blog.find()
+//     .then((result) => {
+
+//     })
+//     .catch((err) =>{
+//         console.log(err)
+//     })
+
+
+
+// const Events = [
+//     {
+//       eventName: "Music Festival",
+//       location: "City Park",
+//       date: "2022-07-15"
+//     },
+//     {
+//       eventName: "Art Exhibition",
+//       location: "Art Gallery",
+//       date: "2022-08-20"
+//     },
+//     {
+//       eventName: "Food Fair",
+//       location: "Town Square",
+//       date: "2022-09-10"
+//     }
+//   ];
+// }); 
+
+// Start the server
+app.listen(3005, () => {
+    console.log('Server listening on port 3005');
 });
