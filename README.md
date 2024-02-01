@@ -1,8 +1,8 @@
 #  EVENT MANAGER 
 
-<img src="./frontend/public/png-transparent-logo.png>
-<img src="./frontend/public/ERD.jpg>
-<img src="./frontend/public/event-management-planning-business-event.png
+<img src="./frontend/public/png-transparent-logo.png />
+<img src="./frontend/public/ERD.jpg />
+<img src="./frontend/public/event-management-planning-business-event.png />
 
 ### MOTIVATION
 
