@@ -1,11 +1,12 @@
-#  EVENT MANAGER APPLICATION
+#  EVENT MANAGER 
 
-### Website
-
+<img src="./frontend/public/png-transparent-logo.png>
+<img src="./frontend/public/ERD.jpg>
+<img src="./frontend/public/event-management-planning-business-event.png
 
 ### MOTIVATION
 
-> This is a Per Scholas Project I built as part of a school project.
+> Per Scholas Project I built as part of a school project.
 
 ### TECHNOLOGIES
 >html, css, javascript, react, nodejs, express, mongoDb - Fullstack Application
@@ -15,5 +16,4 @@
 
 
 ### CREDITS
-
-> I'm giving credits to Per Scholas our school, and **Jade Del Rosario-Bell**, and **Oussama Hamani** our >school teachers 
+> credits go to Per Scholas our school, and **Jade Del Rosario-Bell**, and **Oussama Hamani** our school teachers 

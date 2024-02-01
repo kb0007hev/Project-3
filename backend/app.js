@@ -2,10 +2,29 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors') // access the server from different domains 
 const bodyParser = require('body-parser') //form Posts 
+const router = require('./routes/router')
+
 
 const Event = require('./models/event');
 
 const app = express();
+
+// Body Parser
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
+
+// Cors 
+const corsOptions = {
+    origin: '*',
+    credentials: true,
+    optionSuccessStatus: 200
+}
+app.use(cors(corsOptions))
+
+
+//Router 
+app.use('/', router)
+
 
 const DB = "mongodb+srv://kevin:test789@cluster0.sk6mdok.mongodb.net/Events?retryWrites=true&w=majority";
 
@@ -98,6 +117,6 @@ app.get('/single-blog', (req, res) => {
 // }); 
 
 // Start the server
-app.listen(3005, () => {
-    console.log('Server listening on port 3005');
+app.listen(4000, () => {
+    console.log('Server listening on port 4000');
 });
